@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stealth File Transfer Tool Documentation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        header {
+            background: linear-gradient(135deg, #2c3e50, #4a69bd);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #4a69bd;
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+        }
+        h3 {
+            color: #3498db;
+        }
+        .subtitle {
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .code-block {
+            background-color: #2d3436;
+            color: #dfe6e9;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .option {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-left: 4px solid #3498db;
+            margin: 1rem 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .option-name {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .example {
+            background-color: #e8f4fc;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+        .note {
+            background-color: #fff3cd;
+            padding: 1rem;
+            border-left: 4px solid #ffc107;
+            margin: 1rem 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .warning {
+            background-color: #f8d7da;
+            padding: 1rem;
+            border-left: 4px solid #dc3545;
+            margin: 1rem 0;
+            border-radius: 0 5px 5px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #4a69bd;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Stealth File Transfer Tool</h1>
+        <p class="subtitle">Covert file and message transfer using stealth network techniques</p>
+    </header>
+
+    <div class="container">
+        <h2>Overview</h2>
+        <p>The Stealth File Transfer Tool is a pair of Python scripts designed for covert communication over networks. It uses various obfuscation techniques and non-standard protocols to make traffic appear as normal network noise, making it difficult to detect and block.</p>
+
+        <div class="note">
+            
+        </div>
+
+        <h2>Components</h2>
+        <ul>
+            <li><strong>stealth_sender.py</strong> - Sends files and messages using stealth techniques</li>
+            <li><strong>stealth_receiver.py</strong> - Receives files and messages sent by the sender</li>
+        </ul>
+
+        <h2>Installation</h2>
+        <p>Before using the tool, install the required dependencies:</p>
+        <div class="code-block">
+            pip install scapy
+        </div>
+
+        <h2>Sender Options</h2>
+        <p>The sender script (<code>stealth_sender.py</code>) accepts the following parameters:</p>
+
+        <table>
+            <tr>
+                <th>Option</th>
+                <th>Description</th>
+                <th>Default</th>
+            </tr>
+            <tr>
+                <td>-i, --interface</td>
+                <td>Network interface (e.g., eth0, wlan0)</td>
+                <td><em>Required</em></td>
+            </tr>
+            <tr>
+                <td>-d4, --destination4</td>
+                <td>Destination IPv4 address</td>
+                <td><em>Required</em></td>
+            </tr>
+            <tr>
+                <td>-m, --message</td>
+                <td>Message to send (text)</td>
+                <td><em>Optional</em></td>
+            </tr>
+            <tr>
+                <td>-f, --file</td>
+                <td>File to send</td>
+                <td><em>Optional</em></td>
+            </tr>
+            <tr>
+                <td>-O, --obfuscation</td>
+                <td>Obfuscation method: none, base64, compression, xor</td>
+                <td>none</td>
+            </tr>
+            <tr>
+                <td>--delay</td>
+                <td>Delay between packets (milliseconds)</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>--chunk-size</td>
+                <td>File chunk size (bytes)</td>
+                <td>500</td>
+            </tr>
+            <tr>
+                <td>-sp, --srcport</td>
+                <td>Source port</td>
+                <td>443</td>
+            </tr>
+            <tr>
+                <td>-dp, --dstport</td>
+                <td>Destination port</td>
+                <td>443</td>
+            </tr>
+            <tr>
+                <td>-T, --tcp</td>
+                <td>Use TCP instead of UDP</td>
+                <td>False</td>
+            </tr>
+            <tr>
+                <td>-v, --verbose</td>
+                <td>Verbose output</td>
+                <td>False</td>
+            </tr>
+        </table>
+
+        <h2>Receiver Options</h2>
+        <p>The receiver script (<code>stealth_receiver.py</code>) accepts the following parameters:</p>
+
+        <table>
+            <tr>
+                <th>Option</th>
+                <th>Description</th>
+                <th>Default</th>
+            </tr>
+            <tr>
+                <td>-i, --interface</td>
+                <td>Network interface (e.g., eth0, wlan0, lo)</td>
+                <td><em>Required</em></td>
+            </tr>
+            <tr>
+                <td>-o, --output-dir</td>
+                <td>Output directory for received files</td>
+                <td>received_files</td>
+            </tr>
+            <tr>
+                <td>-v, --verbose</td>
+                <td>Verbose output</td>
+                <td>False</td>
+            </tr>
+        </table>
+
+        <h2>Obfuscation Methods</h2>
+        <p>The tool supports multiple obfuscation techniques for file transfers:</p>
+
+        <div class="option">
+            <p class="option-name">none</p>
+            <p>No additional obfuscation beyond the standard protocol hiding.</p>
+        </div>
+
+        <div class="option">
+            <p class="option-name">base64</p>
+            <p>Encodes file data using Base64 encoding, making it appear as text.</p>
+        </div>
+
+        <div class="option">
+            <p class="option-name">compression</p>
+            <p>Compresses file data using zlib compression, reducing size and altering patterns.</p>
+        </div>
+
+        <div class="option">
+            <p class="option-name">xor</p>
+            <p>Applies XOR encryption with a fixed key to obfuscate file contents.</p>
+        </div>
+
+        <h2>Usage Examples</h2>
+
+        <h3>Basic Message Transfer</h3>
+        <div class="example">
+            <p><strong>Sender:</strong></p>
+            <div class="code-block">
+                python3 stealth_sender.py -i eth0 -d4 192.168.1.100 -m "Hello, this is a secret message!"
+            </div>
+
+            <p><strong>Receiver:</strong></p>
+            <div class="code-block">
+                python3 stealth_receiver.py -i eth0
+            </div>
+        </div>
+
+        <h3>File Transfer Without Obfuscation</h3>
+        <div class="example">
+            <p><strong>Sender:</strong></p>
+            <div class="code-block">
+                python3 stealth_sender.py -i wlan0 -d4 10.0.0.5 -f document.pdf -O none
+            </div>
+
+            <p><strong>Receiver:</strong></p>
+            <div class="code-block">
+                python3 stealth_receiver.py -i wlan0 -o received_docs
+            </div>
+        </div>
+
+        <h3>File Transfer with Base64 Obfuscation</h3>
+        <div class="example">
+            <p><strong>Sender:</strong></p>
+            <div class="code-block">
+                python3 stealth_sender.py -i eth0 -d4 192.168.1.100 -f secret.txt -O base64 --delay 10
+            </div>
+
+            <p><strong>Receiver:</strong></p>
+            <div class="code-block">
+                python3 stealth_receiver.py -i eth0 -v
+            </div>
+        </div>
+
+        <h3>File Transfer with Compression</h3>
+        <div class="example">
+            <p><strong>Sender:</strong></p>
+            <div class="code-block">
+                python3 stealth_sender.py -i eth0 -d4 192.168.1.100 -f largefile.zip -O compression --chunk-size 1000
+            </div>
+
+            <p><strong>Receiver:</strong></p>
+            <div class="code-block">
+                python3 stealth_receiver.py -i eth0 -o downloads
+            </div>
+        </div>
+
+        <h3>File Transfer with XOR Encryption</h3>
+        <div class="example">
+            <p><strong>Sender:</strong></p>
+            <div class="code-block">
+                python3 stealth_sender.py -i wlan0 -d4 10.0.0.5 -f sensitive.doc -O xor -T -sp 5353 -dp 5353
+            </div>
+
+            <p><strong>Receiver:</strong></p>
+            <div class="code-block">
+                python3 stealth_receiver.py -i wlan0 -v
+            </div>
+        </div>
+
+        <h3>Using Custom Ports and TCP</h3>
+        <div class="example">
+            <p><strong>Sender:</strong></p>
+            <div class="code-block">
+                python3 stealth_sender.py -i eth0 -d4 192.168.1.100 -f data.bin -O base64 -T -sp 8080 -dp 8080 --delay 5
+            </div>
+
+            <p><strong>Receiver:</strong></p>
+            <div class="code-block">
+                python3 stealth_receiver.py -i eth0 -o received_files -v
+            </div>
+        </div>
+
+        <h2>Stealth Techniques</h2>
+        <p>The tool employs several techniques to avoid detection:</p>
+        <ul>
+            <li>Uses uncommon IP protocols (41, 47, 50, 51) instead of standard TCP/UDP</li>
+            <li>Encapsulates traffic in IPv6 packets with random addresses</li>
+            <li>Adds random obfuscation headers to mimic legitimate traffic</li>
+            <li>Supports configurable delays between packets to avoid pattern detection</li>
+            <li>Uses common ports (like 443) to appear as HTTPS traffic</li>
+        </ul>
+
+        <div class="warning">
+            <p><strong>Warning:</strong> While these techniques provide some level of stealth, they are not foolproof. Advanced network monitoring systems may still detect this traffic.</p>
+        </div>
+
+        <h2>Troubleshooting</h2>
+        <p>If you encounter issues:</p>
+        <ol>
+            <li>Ensure both sender and receiver are using the same network interface</li>
+            <li>Check that firewalls are not blocking the traffic</li>
+            <li>Use the <code>-v</code> flag for verbose output to debug issues</li>
+            <li>Verify that the destination IP address is correct</li>
+            <li>Try different obfuscation methods if one isn't working</li>
+        </ol>
+
+        <h2>Legal and Ethical Considerations</h2>
+        <p>This tool is intended for:</p>
+        <ul>
+            <li>Security research and education</li>
+            <li>Authorized penetration testing</li>
+            <li>Testing network monitoring systems</li>
+            <li>Legitimate covert communication with proper authorization</li>
+        </ul>
+
+        <p>Always ensure you have proper authorization before using this tool on any network you don't own or explicitly have permission to test.</p>
+    </div>
+
+    <div class="footer">
+   
+    </div>
+</body>
+</html>
