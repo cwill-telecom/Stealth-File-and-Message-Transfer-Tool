@@ -1,6 +1,5 @@
 # Stealth-File-and-Message-Transfer-Tool
-Python scripts for covert file/message transfer using protocol randomization, IPv6 encapsulation, and multiple obfuscation methods including Base64, compression, and XOR encryption.
-# Stealth File Transfer Tool
+
 
 A pair of Python scripts for covert file and message transfer using stealth network techniques. These tools use various obfuscation methods and non-standard protocols to make traffic appear as normal network noise.
 
@@ -157,6 +156,7 @@ If you encounter issues:
 3. Use the `-v` flag for verbose output to debug issues
 4. Verify that the destination IP address is correct
 5. Try different obfuscation methods if one isn't working
+6. Try different delay and chunk-size attributes when send files.
 
 ## Legal and Ethical Considerations
 
